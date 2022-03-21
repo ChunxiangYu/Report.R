@@ -141,6 +141,7 @@ dt_model<-rpart(is_canceled~.,
                 data=training_set, 
                 method="class",
                 control=rpart.control(cp=0, maxdepth = 3))
+printcp(dt_model) #cp = 0 is best
 dt_prob<-predict(dt_model,test_set)[,2]
 
 log_model<-glm(is_canceled~.,family="binomial",data=training_set)
